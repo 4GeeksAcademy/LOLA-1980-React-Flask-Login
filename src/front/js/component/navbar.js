@@ -3,40 +3,40 @@ import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const Navbar = () => {
-	const { store, actions } = useContext(Context);
-	const navigate = useNavigate();
+    const { store, actions } = useContext(Context);
+    const navigate = useNavigate();
 
-	const handleLogout = () => {
+    const handleLogout = () => {
         actions.logout();
         navigate('/login');
     };
 
 
-	return (
-		<nav class="navbar navbar-expand-lg background_blue">
-			 <div className='container-fluid'>
-                <Link className='navbar-brand' to='/'>PetShop</Link>
+    return (
+        <nav className="navbar navbar-expand-lg background_blue">
+            <div className='container-fluid'>
+                <Link className='navbar-brand d-flex text-white fw-bold fs-1' to='/'>PetShop</Link>
                 <div className='collapse navbar-collapse' id='navbarNav'>
-                    <ul className='navbar-nav'>
+                    <ul className='navbar-nav ms-auto'>
                         <li className='nav-item'>
-                            <Link className='nav-link' to='/signup'>Signup</Link>
+                            <Link className='nav-link text-white fs-5' to='/signup'>Signup</Link>
                         </li>
                         <li className='nav-item'>
-                            <Link className='nav-link' to='/login'>Login</Link>
+                            <Link className='nav-link text-white fs-5' to='/login'>Login</Link>
                         </li>
                         {store.isAuthenticated && (
                             <>
                                 <li className='nav-item'>
-                                    <Link className='nav-link' to='/private'>Private</Link>
+                                    <Link className='nav-link text-white fs-5' to='/private'>Private</Link>
                                 </li>
                                 <li className='nav-item'>
-                                    <button className='nav-link btn' onClick={handleLogout}>Logout</button>
+                                    <button className='btn btn-primary' onClick={handleLogout}>Logout</button>
                                 </li>
                             </>
                         )}
                     </ul>
                 </div>
             </div>
-		</nav>
-	);
+        </nav>
+    );
 };

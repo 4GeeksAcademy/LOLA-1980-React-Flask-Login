@@ -66,6 +66,7 @@ const injectContext = PassedComponent => {
 			</Context.Provider>
 		);
 	};
+
 	return StoreWrapper;
 
 	/*return (props) => (

@@ -26,7 +26,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					phone: 1234567
 				}
 			],*/ // Agrega una lista de usuarios para simular la base de datos
-			
+
 			token: localStorage.getItem('token') || null,
 			isAuthenticated: !!localStorage.getItem('token')
 		},
@@ -86,7 +86,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			signup: async (email, password, name, lastname, phone) => {
-				const response = await fetch(`${BASE_URL}/api/signup`, {
+				const response = await fetch(`${process.env.BACKEND_URL}/api/signup`, {
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json'
@@ -104,7 +104,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			getPrivateMessage: async () => {
 				const token = store.token;
-				const response = await fetch(`${BASE_URL}/api/private`, {
+				const response = await fetch(`${process.env.BACKEND_URL}/api/private`, {
 					method: 'GET',
 					headers: {
 						'Authorization': `Bearer ${token}`

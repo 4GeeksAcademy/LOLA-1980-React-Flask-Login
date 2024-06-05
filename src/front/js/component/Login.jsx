@@ -21,12 +21,12 @@ export const Login = () => {
         <div className='container'>
             <form className='d-flex justify-content-center mt-4 row' onSubmit={handleLogin}>
                 <div className='col-md-6'>
-                    <h2 className='text-center'>Login</h2>
-                    <div class="col-md-12 mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Email</label>
+                    <h2 className='text-center text_blue fw-bold'>Login</h2>
+                    <div className="col-md-12 mb-3">
+                        <label htmlFor="exampleInputEmail1" className="form-label text_blue fw-bold">Email</label>
                         <input
                             type="email"
-                            class="form-control"
+                            className="form-control"
                             id="exampleInputEmail1"
                             aria-describedby="emailHelp"
                             placeholder="Email"
@@ -34,13 +34,13 @@ export const Login = () => {
                             onChange={(e) => setEmail(e.target.value)}
                             required
                         />
-                        <div id="emailHelp" class="form-text">No compartiremos tu email con nadie mas.</div>
+                        <div id="emailHelp" className="form-text">No compartiremos tu email con nadie mas.</div>
                     </div>
-                    <div class="col-md-12 mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <div className="col-md-12 mb-3">
+                        <label htmlFor="exampleInputPassword1" className="form-label text_blue fw-bold">Password</label>
                         <input
                             type="password"
-                            class="form-control"
+                            className="form-control"
                             id="exampleInputPassword1"
                             placeholder="Password"
                             value={password}
@@ -48,7 +48,7 @@ export const Login = () => {
                             required
                         />
                     </div>
-                    <button type="submit" class="col-md-12 btn btn-primary">Login</button>
+                    <button type="submit" className="col-md-12 btn btn-primary">Login</button>
                 </div>
             </form>
         </div>
