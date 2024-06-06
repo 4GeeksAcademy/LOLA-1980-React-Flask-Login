@@ -79,7 +79,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 						isAuthenticated: true,
 						token: data.token
 					}));
-					getActions().navigate('/private');
+					const navigate = getActions().navigate;
+					if (typeof navigate === 'function') {
+						navigate('/private');
+					} else {
+						console.error('Navigate is not a function');
+					}
 				} else {
 					console.log(data.msg);
 				}
