@@ -74,21 +74,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const data = await response.json();
 				if (response.ok) {
 					localStorage.setItem('token', data.token);
-					setStore((prevState) => ({
-						...prevState,
-						isAuthenticated: true,
-						token: data.token
-					}));
-					const navigate = getActions().navigate;
-					if (typeof navigate === 'function') {
-						navigate('/private');
-					} else {
-						console.error('Navigate is not a function');
-					}
+					setStore({ isAuthenticated: true, token: data.token });
+					return true;  // Retorna true si el login fue exitoso
 				} else {
 					console.log(data.msg);
+					return false;  // Retorna false si hubo un error
 				}
 			},
+
 
 			signup: async (email, password, name, lastname, phone) => {
 				const response = await fetch(`${process.env.BACKEND_URL}/api/signup`, {
@@ -103,7 +96,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(data.msg);
 				} else {
 					alert('Usuario registrado exitosamente');
-					getActions().navigate('/login');
+					navigate('/login');
 				}
 			},
 
@@ -128,13 +121,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			logout: () => {
 				localStorage.removeItem('token');
-				setStore((prevState) => ({
-					...prevState,
-					isAuthenticated: false,
-					token: null,
-					message: null
-				}));
-			}
+				setStore({ isAuthenticated: false, token: null });
+				getActions().navigate('/login');
+			},
 
 
 			/*signup: async (email, password) => {

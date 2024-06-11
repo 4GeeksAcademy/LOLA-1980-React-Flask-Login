@@ -8,11 +8,21 @@ export const Login = () => {
     const { actions, store } = useContext(Context);
     const navigate = useNavigate();
 
-    const handleLogin = async (e) => {
+    /*const handleLogin = async (e) => {
         e.preventDefault();
         await actions.login(email, password);
         if (store.isAuthenticated) {
             navigate('/private');
+        }
+    };*/
+
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        const success = await actions.login(email, password);
+        if (success) {
+            navigate('/private');
+        } else {
+            alert("Credenciales inválidas");
         }
     };
 

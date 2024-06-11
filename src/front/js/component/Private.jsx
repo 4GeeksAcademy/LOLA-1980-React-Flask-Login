@@ -17,7 +17,7 @@ export const Private = () => {
 
   return (
     <div className='container'>
-      <h1 className='text-center mt-4'>Private Page</h1>
+      <h1 className='text-center mt-4'>Página Privada</h1>
       <div className='text-center'>
         {store.message ? <p>{store.message}</p> : <p>Loading...</p>}
       </div>
